@@ -3,13 +3,14 @@ import 'package:cinema/components/rounded_input_field.dart';
 import 'package:cinema/components/rounded_password_field.dart';
 import 'package:cinema/constants/color.dart';
 import 'package:cinema/model/login_model.dart';
-import 'package:cinema/screen/home_screen.dart';
-import 'package:cinema/screen/welcome/background.dart';
-import 'package:cinema/screen/welcome/process.dart';
-import 'package:cinema/screen/welcome/signup_screen.dart';
-import 'package:cinema/screen/welcome/welcome_screen.dart';
+import 'package:cinema/screens/home_screen.dart';
+import 'package:cinema/screens/welcome/background.dart';
+import 'package:cinema/screens/welcome/process.dart';
+import 'package:cinema/screens/welcome/signup_screen.dart';
+import 'package:cinema/screens/welcome/welcome_screen.dart';
 import 'package:cinema/service/api.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -27,8 +28,14 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     loginRequestModel = new LoginRequestModel();
-    loginRequestModel.username = "abcd";
-    print(loginRequestModel.username);
+  }
+
+  void _loadState(LoginResponseModel model) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('username', model.username.toString());
+    prefs.setString('email', model.email.toString());
+    prefs.setString('avatarURL', model.avatarURL.toString());
+    prefs.setString('fullName', model.fullName.toString());
   }
 
   @override
@@ -73,25 +80,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 setState(() {
                   isApiCallProcess = true;
                 });
-                print(loginRequestModel.toJson());
-
                 APIService apiService = new APIService();
                 apiService.login(loginRequestModel).then(
                   (value) {
                     setState(() {
                       isApiCallProcess = false;
                     });
+
+                    _loadState(value);
                     final snackBar =
                         SnackBar(content: Text("Login Successful"));
                     scaffoldKey.currentState.showSnackBar(snackBar);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return HomeScreen();
-                        },
-                      ),
-                    );
+                    Future.delayed(Duration(seconds: 1)).then((_) {
+                      // this code is executed after the future ends.
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return HomeScreen();
+                          },
+                        ),
+                      );
+                    });
                   },
                 );
               },
