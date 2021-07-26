@@ -1,5 +1,5 @@
-import 'package:cinema/screen/home_screen.dart';
-import 'package:cinema/screen/welcome/welcome_screen.dart';
+import 'package:cinema/screens/home_screen.dart';
+import 'package:cinema/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

@@ -1,6 +1,6 @@
 import 'package:cinema/constants/color.dart';
-import 'package:cinema/screen/welcome/background.dart';
-import 'package:cinema/screen/welcome/login_signup_screen.dart';
+import 'package:cinema/screens/welcome/background.dart';
+import 'package:cinema/screens/welcome/login_signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
