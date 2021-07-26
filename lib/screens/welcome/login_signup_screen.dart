@@ -1,9 +1,9 @@
 import 'package:cinema/components/rounded_button.dart';
 import 'package:cinema/constants/color.dart';
-import 'package:cinema/screen/welcome/background.dart';
-import 'package:cinema/screen/welcome/login_screen.dart';
-import 'package:cinema/screen/welcome/signup_screen.dart';
-import 'package:cinema/screen/welcome/welcome_screen.dart';
+import 'package:cinema/screens/welcome/background.dart';
+import 'package:cinema/screens/welcome/login_screen.dart';
+import 'package:cinema/screens/welcome/signup_screen.dart';
+import 'package:cinema/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginSignupScreen extends StatelessWidget {
