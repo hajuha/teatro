@@ -1,4 +1,5 @@
 import 'package:cinema/components/widget.dart';
+import 'package:cinema/constants/color.dart';
 import 'package:cinema/data/movie_data.dart';
 import 'package:cinema/screens/booking_screen/booking_screen.dart';
 import 'package:flutter/material.dart';
@@ -169,9 +170,16 @@ class _DetailScreenState extends State<DetailScreen>
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(
-                        height: 28,
+                        height: 36,
                       ),
-                      // _cast(),
+                      Text(
+                        "Actors: " + widget.movie.actors,
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: TextColor,
+                            fontWeight: FontWeight.w700),
+                        textAlign: TextAlign.start,
+                      ),
                       SizedBox(
                         height: 68,
                       )
