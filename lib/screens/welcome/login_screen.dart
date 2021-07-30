@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cinema/components/rounded_button.dart';
 import 'package:cinema/components/rounded_input_field.dart';
 import 'package:cinema/components/rounded_password_field.dart';
@@ -32,10 +34,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _loadState(LoginResponseModel model) async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setString('username', model.username.toString());
-    prefs.setString('email', model.email.toString());
-    prefs.setString('avatarURL', model.avatarURL.toString());
-    prefs.setString('fullName', model.fullName.toString());
+    String user = jsonEncode(model);
+    prefs.setString('userData', user);
   }
 
   @override
