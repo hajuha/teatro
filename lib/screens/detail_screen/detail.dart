@@ -86,7 +86,7 @@ class _DetailScreenState extends State<DetailScreen>
                 ));
           },
           child: Text(
-            'Buy Ticketss',
+            'Buy Ticket',
             style: TextStyle(
                 color: AppColor.primary,
                 fontWeight: FontWeight.bold,
