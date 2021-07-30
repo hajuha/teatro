@@ -1,5 +1,9 @@
 import 'package:cinema/screens/booking_screen/custom_app_bar.dart';
 import 'package:cinema/screens/booking_screen/date.dart';
+import 'package:cinema/screens/booking_screen/pay.dart';
+import 'package:cinema/screens/booking_screen/place.dart';
+import 'package:cinema/screens/booking_screen/seat.dart';
+import 'package:cinema/screens/booking_screen/time.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,21 +28,18 @@ class _BookingScreenState extends State<BookingScreen> {
             //app bar
             CustomAppBar(widget.movieName),
             DateSelector(),
-
-            //date selector
-            // DateSelector(),
             //
             // //Time selector
-            // TimeSelector(),
+            TimeSelector(),
             //
             // //Location and theatre
-            // LocationText(),
+            Place(),
             //
             // //Seat selector
-            // SeatSelector(),
+            SeatSelector(),
             //
             // //Pay button and seat categories
-            // PayButton(),
+            PayButton(),
           ],
         ),
       ),

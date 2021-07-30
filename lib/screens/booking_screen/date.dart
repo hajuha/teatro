@@ -1,5 +1,6 @@
 import 'package:cinema/constants/color.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DateSelector extends StatefulWidget {
   @override
@@ -9,6 +10,11 @@ class DateSelector extends StatefulWidget {
 class _DateSelectorState extends State<DateSelector> {
   int dateIndexSelected = 1;
   DateTime currentDate = DateTime.now();
+
+  void _setDate(date) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('date', date);
+  }
 
   String _dayFormat(int dayWeek) {
     switch (dayWeek) {
@@ -67,6 +73,9 @@ class _DateSelectorState extends State<DateSelector> {
                     var date = currentDate.add(Duration(days: index));
                     return GestureDetector(
                       onTap: () {
+                        // _setDate(dateoString());
+                        print(new DateTime.fromMillisecondsSinceEpoch(
+                            date.millisecondsSinceEpoch));
                         setState(() {
                           dateIndexSelected = index;
                         });
