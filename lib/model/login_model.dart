@@ -1,24 +1,26 @@
 class LoginResponseModel {
-  final String username;
-  final String avatarURL;
-  final String fullName;
-  final String email;
-  final String error;
+  String username;
+  String email;
+  String avatarURL;
+  String fullName;
 
   LoginResponseModel(
-      {this.username, this.avatarURL, this.fullName, this.email, this.error});
+      {this.username, this.email, this.avatarURL, this.fullName});
 
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
-    return LoginResponseModel(
-      email: json["data"]["email"] != null ? json["data"]["email"] : "",
-      avatarURL:
-          json["data"]["avatarURL"] != null ? json["data"]["avatarURL"] : "",
-      fullName:
-          json["data"]["fullName"] != null ? json["data"]["fullName"] : "",
-      username:
-          json["data"]["username"] != null ? json["data"]["username"] : "",
-      error: json["data"]["error"] != null ? json["data"]["error"] : "",
-    );
+  LoginResponseModel.fromJson(Map<String, dynamic> json) {
+    username = json['username'];
+    email = json['email'];
+    avatarURL = json['avatarURL'];
+    fullName = json['fullName'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['username'] = this.username;
+    data['email'] = this.email;
+    data['avatarURL'] = this.avatarURL;
+    data['fullName'] = this.fullName;
+    return data;
   }
 }
 
