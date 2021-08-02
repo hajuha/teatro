@@ -1,4 +1,4 @@
-# cinema
+# Teatro
 
 A new Flutter project.
 
